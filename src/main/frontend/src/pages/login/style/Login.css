@@ -1,0 +1,22 @@
+.header-icon{
+    position: absolute;
+    top: 0.8rem;
+    left: 0;
+    width: 22rem;
+    height: 14rem;
+}
+
+.login-image{
+    position: absolute;
+    top: 15rem;
+    left: 60rem;
+    width:40rem;
+    height:45rem;
+
+}
+
+.login-form{
+    position: absolute;
+    top: 15rem;
+    left: 60rem;
+}
