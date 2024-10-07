@@ -27,8 +27,8 @@ function BoardDetail(props) {
 
                     <div className="boarddetail-body-box-btnbox">
                         <div className="boarddetail-body-box-btnbox-like" style={{cursor:'pointer'}}>2</div>
-                        <div className="boarddetail-body-box-btnbox-comment" style={{cursor:'pointer'}}>3</div>
-                        <div className="boarddetail-body-box-btnbox-share" style={{cursor:'pointer'}}>share</div>
+                        {/*<div className="boarddetail-body-box-btnbox-comment" style={{cursor:'pointer'}}>3</div>*/}
+                        {/*<div className="boarddetail-body-box-btnbox-share" style={{cursor:'pointer'}}>share</div>*/}
                     </div>
 
                     <input className="boarddetail-body-box-writecomment" type="text" placeholder="Write Comment" />

@@ -1,9 +1,36 @@
 import "./style/BoardForm.css";
-import React from "react";
-
+import React, { useState } from "react";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 
 function BoardForm(props) {
+    const [title, setTitle] = useState('');
+    const [body, setBody] = useState('');
+    const navi = useNavigate();
 
+    // Function to handle the form submission
+    const handleSubmit = (e) => {
+        e.preventDefault();
+
+        const postData = {
+            authorId : sessionStorage.getItem("userId"),
+            title: title,
+            content: body
+        };
+
+        // Send POST request to the /board/create endpoint
+        axios
+            .post("/board/create", postData)
+            .then((response) => {
+                console.log("Post created successfully:", response.data);
+                console.log(response.data);
+                // Navigate to the board page after successful post creation
+                navi("/board");
+            })
+            .catch((error) => {
+                console.error("Error creating post:", error);
+            });
+    };
 
     return (
         <div className="boardform">
@@ -35,15 +62,15 @@ function BoardForm(props) {
 
             <div className="boardform-body">
                 <div className="bodyform-body-title">
-                    <input className="board-body-title-input" type="text" placeholder="Title"/>
+                    <input className="board-body-title-input" type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
                 </div>
                 <div className="bodyform-body-body">
-                    <input className="board-body-body-input" type="text" placeholder="Body"/>
+                    <input className="board-body-body-input" type="text" placeholder="Body" value={body} onChange={(e) => setBody(e.target.value)}/>
                 </div>
 
                 <div className="bodyform-body-btn">
-                    <button className="boardform-body-btn-cancelbtn">Cancel</button>
-                    <button className="boardform-body-btn-postbtn">Post</button>
+                    <button className="boardform-body-btn-cancelbtn" onClick={() => navi("/board")}>Cancel</button>
+                    <button className="boardform-body-btn-postbtn" onClick={handleSubmit}>Post</button>
                 </div>
             </div>
 

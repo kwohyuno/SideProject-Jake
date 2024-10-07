@@ -1,8 +1,10 @@
 import "./style/Board.css";
 import React, {useState} from 'react';
 import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Avatar } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function Board(props) {
+    const navi = useNavigate();
     const [open, setOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
 
@@ -14,6 +16,10 @@ function Board(props) {
     const handleClose = () => {
         setOpen(false);
         setSelectedUser(null);
+    };
+
+    const handleCreate = () => {
+        navi("/board/form");
     };
 
     // 가상 데이터 예시
@@ -36,7 +42,7 @@ function Board(props) {
                     <input className="board-header-searchbar-input" type="text" placeholder="Search posts"/>
                 </div>
                 <div className="board-header-posticon">
-                    <button className="board-header-posticon-btn">+ Create</button>
+                    <button className="board-header-posticon-btn" onClick={handleCreate}>+ Create</button>
                 </div>
                 <div className="board-header-chaticon">
                     <img className="board-header-chaticon" alt="" src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/chaticon.svg'} style={{ cursor: 'pointer' }}/>

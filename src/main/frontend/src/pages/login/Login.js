@@ -5,6 +5,7 @@ import axios from "axios";
 
 
 function Login(props) {
+
     const navi = useNavigate();
     const [id, setId] = useState("");
     const [password, setPassword] = useState("");
@@ -15,12 +16,15 @@ function Login(props) {
     const onSubmitEvent = (e)=>{
         e.preventDefault();
         const dto = {
-          username: id,
+          userId: id,
           password: password,
         };
         axios
-            .post("http://localhost:8080/api/login", dto, {withCredentials:true})
+            .post("/login", dto)
             .then(()=>{
+                console.log(dto);
+                sessionStorage.setItem("userId", id);
+                console.log(sessionStorage.getItem("userId"));
                 navi("/board");
             })
             .catch((error)=>{

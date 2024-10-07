@@ -10,28 +10,6 @@ function Signup(props) {
     const [email, setEmail] = useState('');
 
 
-    // const onLoggin = () => {
-    //     axios({
-    //         method: "POST",
-    //         url: "/api/signup",
-    //         data: {
-    //             "userid": id,
-    //             "password": password,
-    //             "email": email
-    //         }
-    //     }).then((res) => {
-    //         console.log(res);
-    //         console.log("login succcess");
-    //         console.log(res.data.email);
-    //         console.log(res.data.username);
-    //         // 로그인 성공 시 페이지 이동 등 추가 작업 수행
-    //         navi("/board");
-    //         // console.log(sessionStorage.getItem());
-    //     }).catch(error => {
-    //         console.log(error);
-    //         alert("로그인에 실패했습니다.");
-    //     });
-    // };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -44,22 +22,16 @@ function Signup(props) {
             .post("/members/create", dto)
             .then(()=>{
                 console.log(dto);
+                sessionStorage.setItem("userId", id);
                 navi("/board");
             })
             .catch((error)=>{
                 console.log(error);
             });
-        // onLoggin(); // submit 버튼 클릭 시 onLoggin 함수 호출
+
     };
 
-        // axios.post("http://localhost:8080/api/signon", userData)
-        //     .then(response => {
-        //         console.log("User signed on successfully:", response.data);
-        //         navi("/board");
-        //     })
-        //     .catch(error => {
-        //         console.error("There was an error signing on:", error);
-        //     });
+
 
 
 
