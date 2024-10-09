@@ -6,6 +6,7 @@ import com.example.SpringDemo.Model.Member;
 import com.example.SpringDemo.Repository.BoardRepository;
 import com.example.SpringDemo.Repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import com.example.SpringDemo.Services.MemberService;
 
@@ -41,4 +42,7 @@ public class BoardService {
         return boardRepository.findAll();
     }
 
+    public Board getBoardDetail(int boardId) {
+        return boardRepository.findById(boardId).orElseThrow(() -> new IllegalArgumentException("Board not found"));
+    }
 }

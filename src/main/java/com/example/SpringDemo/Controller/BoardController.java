@@ -23,10 +23,14 @@ public class BoardController {
         return boardService.createBoard(board);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Board> getAllBoard() {
         return boardService.getAllBoard();
     }
 
+    @GetMapping("/detail/{boardId}")
+    public Board getBoardDetail(@PathVariable int boardId) {
+        return boardService.getBoardDetail(boardId);
+    }
 
 }

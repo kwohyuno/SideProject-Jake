@@ -107,7 +107,7 @@
     top: 1rem;
     left:3rem;
 
-    border-top: 2px solid #ff0202;
+    /*border-top: 2px solid #ff0202;*/
 }
 
 
@@ -180,3 +180,18 @@
 }
 
 
+
+.board-body-box2{
+    background-color: #ffffff;
+    padding: 10px; /* 패딩 설정 */
+    font-size: 16px; /* 글씨 크기 설정 */
+
+    /* 위치 조정 (예: 절대 위치로 부모 요소의 하단 우측에 배치) */
+    position: absolute;
+    height:14rem;
+    width:64rem;
+    top: 19rem;
+    left:3rem;
+
+    /*border-top: 2px solid #ff0202;*/
+}

@@ -1,7 +1,37 @@
 import "./style/BoardDetail.css";
-import React from "react";
+import React, {useEffect, useState} from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom"; // useParams import
 
 function BoardDetail(props) {
+    const { boardId } = useParams();
+    const [board,setBoard] = useState([]);
+
+    // const fetchBoardDetail = (boardId) => {
+    //     axios.get(`/api/board/detail/${boardId}}`)
+    //         .then(res => {
+    //             console.log('Board Details:', res.data);
+    //             setBoard(res.data);
+    //         })
+    //         .catch(error => {
+    //             console.error('Error fetching board details:', error);
+    //         });
+    // };
+
+    useEffect(()=>{
+        if (boardId) {
+            // boardId가 있을 때만 요청을 보냄
+            axios
+                .get(`/board/detail/${boardId}`)
+                .then((res) => {
+                    console.log("Board Details:", res.data);
+                    setBoard(res.data);
+                })
+                .catch((error) => {
+                    console.error("Error fetching board details:", error);
+                });
+        }
+    },[]);
 
     return(
         <div className="boarddetail">
@@ -21,8 +51,8 @@ function BoardDetail(props) {
                     <div className="boarddetail-body-box-profile-id"> r/AITAH</div>
                     <div className="boarddetail-body-box-profile-writtentime">12 hour ago</div>
 
-                    <div className="boarddetail-body-box-subject">Roommate search</div>
-                    <div className="boarddetail-body-box-content">Hi everyone, we are looking for a roommate, preferable male as it would be 4 of us and each have our own room. The cost would be 1170 excluding deposit.
+                    <div className="boarddetail-body-box-subject">{board.title}</div>
+                    <div className="boarddetail-body-box-content">{board.content}
                     </div>
 
                     <div className="boarddetail-body-box-btnbox">

@@ -40,8 +40,8 @@ function Login(props) {
                          src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/login_assets/header-icon.svg'}/>
                 </div>
                 <div>
-                    <img className="login-image" alt=""
-                         src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/login_assets/login-image.svg'}/>
+                    {/*<img className="login-image" alt=""*/}
+                    {/*     src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/login_assets/login-image.svg'}/>*/}
                 </div>
 
                 <input

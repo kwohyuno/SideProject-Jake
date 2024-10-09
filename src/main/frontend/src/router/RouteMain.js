@@ -15,7 +15,7 @@ function RouteMain(props) {
 
                 <Route path="/board" element={<Board />} />
                 <Route path="/board/form" element={<BoardForm />} />
-                <Route path="/board/detail" element={<BoardDetail />} />
+                <Route path="/board/detail/:boardId" element={<BoardDetail />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/mypage" element={<Mypage />} />
                 <Route path="/signup" element={<Signup />} />
