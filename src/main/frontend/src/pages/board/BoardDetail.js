@@ -8,6 +8,7 @@ function BoardDetail(props) {
     const [board,setBoard] = useState([]);
     const navi = useNavigate();
 
+
     // const fetchBoardDetail = (boardId) => {
     //     axios.get(`/api/board/detail/${boardId}}`)
     //         .then(res => {
@@ -45,6 +46,10 @@ function BoardDetail(props) {
         }
     };
 
+    const editBoard = (boardId) => {
+        navi(`/board/updateform/${boardId}`,{ state: board });
+    };
+
 
     return(
         <div className="boarddetail">
@@ -71,6 +76,7 @@ function BoardDetail(props) {
                     <div className="boarddetail-body-box-btnbox">
                         <div className="boarddetail-body-box-btnbox-like" style={{cursor:'pointer'}}>2</div>
                         <div className="boarddetail-body-box-btnbox-delete" style={{cursor:'pointer'}} onClick={() => deleteBoard(boardId)}>Delete</div>
+                        <div className="boarddetail-body-box-btnbox-edit" style={{cursor:'pointer'}} onClick={() => editBoard(boardId)}>Edit</div>
                         {/*<div className="boarddetail-body-box-btnbox-comment" style={{cursor:'pointer'}}>3</div>*/}
                         {/*<div className="boarddetail-body-box-btnbox-share" style={{cursor:'pointer'}}>share</div>*/}
                     </div>

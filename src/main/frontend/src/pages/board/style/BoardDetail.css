@@ -104,6 +104,20 @@
     align-items: center; /* Center vertically */
 }
 
+.boarddetail-body-box-btnbox-edit{
+    position:absolute;
+    height:2rem;
+    width:5rem;
+    top:1rem;
+    background-color: #d3d3d3;
+    left:18rem;
+    text-align:center;
+
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
 .boarddetail-body-box-btnbox-comment{
     position:absolute;
     height:2rem;
@@ -236,6 +250,7 @@
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
 }
+
 
 
 

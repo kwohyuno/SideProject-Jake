@@ -20,12 +20,12 @@ function BoardForm(props) {
 
         // Send POST request to the /board/create endpoint
         axios
-            .post("/board/create", postData)
+            .post("/board/update", postData)
             .then((response) => {
-                console.log("Post created successfully:", response.data);
+                console.log("Post updated successfully:", response.data);
                 console.log(response.data);
                 // Navigate to the board page after successful post creation
-                navi("/board");
+                navi("/board/detail");
             })
             .catch((error) => {
                 console.error("Error creating post:", error);

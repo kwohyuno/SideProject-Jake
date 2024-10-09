@@ -38,4 +38,9 @@ public class BoardController {
         boardService.deleteBoard(boardId);
     }
 
+    @PostMapping("/update/{boardId}")
+    public Board updateBoard(@PathVariable int boardId, @RequestBody Board board) {
+        return boardService.updateBoard(boardId,board);
+    }
+
 }

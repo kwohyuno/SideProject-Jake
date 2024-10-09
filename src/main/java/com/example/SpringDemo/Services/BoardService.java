@@ -25,11 +25,9 @@ public class BoardService {
     }
 
     public Board createBoard(Board board) {
-        // Author(Member) 객체 가져오기
         Member member = memberRepository.findByUserId(board.getAuthorId())
                 .orElseThrow(() -> new IllegalArgumentException("Author not found"));
 
-        // Board 객체 생성 및 저장
         Board newBoard = new Board();
         newBoard.setTitle(board.getTitle());
         newBoard.setContent(board.getContent());
@@ -48,5 +46,18 @@ public class BoardService {
 
     public void deleteBoard(int boardId) {
             boardRepository.deleteById(boardId);
+    }
+
+    public Board updateBoard(int boardId, Board board) {
+        // Find the existing board by ID
+        Board existingBoard = boardRepository.findById(boardId)
+                .orElseThrow(() -> new IllegalArgumentException("Board with ID " + boardId + " not found"));
+
+        // Update the fields of the existing board with the new values
+        existingBoard.setTitle(board.getTitle());
+        existingBoard.setContent(board.getContent());
+
+        // Save and return the updated board
+        return boardRepository.save(existingBoard);
     }
 }
