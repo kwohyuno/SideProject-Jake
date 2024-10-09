@@ -29,7 +29,6 @@ function Board(props) {
             .get("/board")
             .then(res => {
                 setBoardList(res.data);
-                console.log(res.data);
             })
             .catch((error) => {
                 console.log(error);

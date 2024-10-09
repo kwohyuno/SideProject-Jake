@@ -1,11 +1,12 @@
 import "./style/BoardDetail.css";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom"; // useParams import
+import {useNavigate, useParams} from "react-router-dom"; // useParams import
 
 function BoardDetail(props) {
     const { boardId } = useParams();
     const [board,setBoard] = useState([]);
+    const navi = useNavigate();
 
     // const fetchBoardDetail = (boardId) => {
     //     axios.get(`/api/board/detail/${boardId}}`)
@@ -24,7 +25,6 @@ function BoardDetail(props) {
             axios
                 .get(`/board/detail/${boardId}`)
                 .then((res) => {
-                    console.log("Board Details:", res.data);
                     setBoard(res.data);
                 })
                 .catch((error) => {
@@ -32,6 +32,19 @@ function BoardDetail(props) {
                 });
         }
     },[]);
+
+    const deleteBoard = (boardId) => {
+        if (window.confirm("Are you sure you want to delete this board?")) {
+            axios.delete(`/board/detail/${boardId}`)
+                .then(() => {
+                    navi(`/board`);  // 삭제 후 목록 페이지로 이동
+                })
+                .catch((error) => {
+                    console.error("Error deleting board:", error);
+                });
+        }
+    };
+
 
     return(
         <div className="boarddetail">
@@ -57,6 +70,7 @@ function BoardDetail(props) {
 
                     <div className="boarddetail-body-box-btnbox">
                         <div className="boarddetail-body-box-btnbox-like" style={{cursor:'pointer'}}>2</div>
+                        <div className="boarddetail-body-box-btnbox-delete" style={{cursor:'pointer'}} onClick={() => deleteBoard(boardId)}>Delete</div>
                         {/*<div className="boarddetail-body-box-btnbox-comment" style={{cursor:'pointer'}}>3</div>*/}
                         {/*<div className="boarddetail-body-box-btnbox-share" style={{cursor:'pointer'}}>share</div>*/}
                     </div>

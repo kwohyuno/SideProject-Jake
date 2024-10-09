@@ -45,4 +45,8 @@ public class BoardService {
     public Board getBoardDetail(int boardId) {
         return boardRepository.findById(boardId).orElseThrow(() -> new IllegalArgumentException("Board not found"));
     }
+
+    public void deleteBoard(int boardId) {
+            boardRepository.deleteById(boardId);
+    }
 }
