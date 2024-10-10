@@ -8,6 +8,8 @@ function BoardForm(props) {
     const [body, setBody] = useState('');
     const navi = useNavigate();
 
+
+
     // Function to handle the form submission
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,12 +22,12 @@ function BoardForm(props) {
 
         // Send POST request to the /board/create endpoint
         axios
-            .post("/board/update", postData)
+            .post("/board/create", postData)
             .then((response) => {
                 console.log("Post updated successfully:", response.data);
                 console.log(response.data);
                 // Navigate to the board page after successful post creation
-                navi("/board/detail");
+                navi(`/board/detail/${response.data.id}`);
             })
             .catch((error) => {
                 console.error("Error creating post:", error);

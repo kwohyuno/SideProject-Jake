@@ -2,27 +2,26 @@ import "./style/BoardDetail.css";
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate, useParams} from "react-router-dom"; // useParams import
+import { Modal, Box, Typography, Button } from "@mui/material";
+
 
 function BoardDetail(props) {
     const { boardId } = useParams();
     const [board,setBoard] = useState([]);
     const navi = useNavigate();
+    const [open, setOpen] = useState(false); // 모달 상태
+    const [translatedTitle, setTranslatedTitle] = useState("");
+    const [translatedText, setTranslatedText] = useState("");
 
 
-    // const fetchBoardDetail = (boardId) => {
-    //     axios.get(`/api/board/detail/${boardId}}`)
-    //         .then(res => {
-    //             console.log('Board Details:', res.data);
-    //             setBoard(res.data);
-    //         })
-    //         .catch(error => {
-    //             console.error('Error fetching board details:', error);
-    //         });
-    // };
+
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+
 
     useEffect(()=>{
         if (boardId) {
-            // boardId가 있을 때만 요청을 보냄
             axios
                 .get(`/board/detail/${boardId}`)
                 .then((res) => {
@@ -49,6 +48,47 @@ function BoardDetail(props) {
     const editBoard = (boardId) => {
         navi(`/board/updateform/${boardId}`,{ state: board });
     };
+
+    // const translateContent = async (e)=>{
+    //     e.preventDefault();
+    //
+    //     try {
+    //         const response = await axios.post('http://localhost:8080/translate', {
+    //             prompt: board.content,
+    //         });
+    //
+    //         setTranslatedText(response.data.translatedText);
+    //         console.log("번역된거는 뭐냐면은"+response.data.translatedText);
+    //
+    //     } catch (error) {
+    //         console.error('Error during translation:', error);
+    //     }
+    //
+    //
+    //     // setTranslatedTitle("Translated title(TBU)")
+    //     // setTranslatedText("Translated text(TBU)");
+    //     handleOpen();
+    // }
+
+    const translateContent = (e) => {
+        e.preventDefault();
+
+        axios.post('http://localhost:8080/translate', {
+            prompt: board.content,
+        })
+            .then((response) => {
+                setTranslatedText(response.data.translatedText);
+                console.log("번역된 텍스트는: " + response.data.translatedText);
+
+                // 모달 열기
+                handleOpen();
+            })
+            .catch((error) => {
+                console.error('번역 중 오류 발생:', error);
+            });
+    }
+
+
 
 
     return(
@@ -77,6 +117,7 @@ function BoardDetail(props) {
                         <div className="boarddetail-body-box-btnbox-like" style={{cursor:'pointer'}}>2</div>
                         <div className="boarddetail-body-box-btnbox-delete" style={{cursor:'pointer'}} onClick={() => deleteBoard(boardId)}>Delete</div>
                         <div className="boarddetail-body-box-btnbox-edit" style={{cursor:'pointer'}} onClick={() => editBoard(boardId)}>Edit</div>
+                        <div className="boarddetail-body-box-btnbox-translate" style={{cursor:'pointer'}} onClick={translateContent}> Translate </div>
                         <div className="boarddetail-body-box-btnbox-dashboard" style={{cursor:'pointer'}} onClick={()=> navi("/board")}>  Dashboard &nbsp; &gt; </div>
                         {/*<div className="boarddetail-body-box-btnbox-comment" style={{cursor:'pointer'}}>3</div>*/}
                         {/*<div className="boarddetail-body-box-btnbox-share" style={{cursor:'pointer'}}>share</div>*/}
@@ -109,6 +150,32 @@ function BoardDetail(props) {
                     </div>
                 </div>
             </div>
+            {/* 모달 */}
+            <Modal open={open} onClose={handleClose}>
+                <Box
+                    sx={{
+                        position: "absolute",
+                        top: "50%",
+                        left: "50%",
+                        transform: "translate(-50%, -50%)",
+                        width: 400,
+                        bgcolor: "background.paper",
+                        border: "2px solid #000",
+                        boxShadow: 24,
+                        p: 4,
+                    }}
+                >
+                    <Typography variant="h6" component="h2">
+                        {/*{translatedTitle ? translatedTitle : "Translating..."}*/}
+                        {translatedTitle}
+                    </Typography>
+                    <Typography sx={{ mt: 2 }}>
+                        {/*{translatedText ? translatedText : "Translating..."}*/}
+                        {translatedText}
+                    </Typography>
+                    <Button onClick={handleClose} sx={{ mt: 2 }}>Close</Button>
+                </Box>
+            </Modal>
         </div>
     );
 }
