@@ -21,11 +21,19 @@ function Login(props) {
         };
         axios
             .post("/login", dto)
-            .then(()=>{
+            .then((res)=>{
                 console.log(dto);
+
+                if(res.data!=''){
+                    // console.log(res);
+                    // console.log(res.data);
+                    console.log()
+                    navi("/board");
+                }else{
+                    alert("Invalid username or password. Please try again.");
+                }
                 sessionStorage.setItem("userId", id);
-                console.log(sessionStorage.getItem("userId"));
-                navi("/board");
+                // console.log(sessionStorage.getItem("userId"));
             })
             .catch((error)=>{
                 console.log(error);
@@ -59,6 +67,10 @@ function Login(props) {
                     onChange={(e) => setPassword(e.target.value)}
                 />
                 <button className="login-form-button" type="submit">Login</button>
+
+                <div className="login-form-signup" onClick={() => navi("/signup")} style={{ cursor: 'pointer' }}>
+                    Sign-up
+                </div>
             </form>
         </div>
     );

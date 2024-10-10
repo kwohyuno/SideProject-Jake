@@ -43,3 +43,13 @@
     height: 5rem;
 }
 
+.login-form-signup{
+    position: absolute;
+    top : 21rem;
+    width:30rem;
+    font-size:13px;
+    left:-3rem;
+    color: blue;
+    text-decoration: underline;
+}
+

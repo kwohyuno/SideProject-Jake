@@ -22,11 +22,15 @@ public class LoginService {
 
         if (foundMember.isPresent()) {
             Member existingMember = foundMember.get();
-            // 비밀번호 비교
+
             if (existingMember.getPassword().equals(member.getPassword())) {
-                return existingMember; // 로그인 성공
+                return existingMember;
+            }else {
+                return null;
             }
+        }else {
+            return null;
         }
-        return null; // 로그인 실패
+
     }
 }

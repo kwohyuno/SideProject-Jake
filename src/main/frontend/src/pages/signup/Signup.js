@@ -23,7 +23,7 @@ function Signup(props) {
             .then(()=>{
                 console.log(dto);
                 sessionStorage.setItem("userId", id);
-                navi("/board");
+                navi("/login");
             })
             .catch((error)=>{
                 console.log(error);
