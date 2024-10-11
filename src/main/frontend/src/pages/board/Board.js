@@ -58,7 +58,7 @@ function Board(props) {
                     <button className="board-header-posticon-btn" onClick={handleCreate}>+ Create</button>
                 </div>
                 <div className="board-header-chaticon">
-                    <img className="board-header-chaticon" alt="" src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/chaticon.svg'} style={{ cursor: 'pointer' }}/>
+                    <img className="board-header-chaticon" alt="" src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/chaticon.svg'} style={{ cursor: 'pointer' }} onClick={()=>navi("/message")}/>
 
                 </div>
                 <div className="board-header-mypagebtn">
