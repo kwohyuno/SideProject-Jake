@@ -33,7 +33,8 @@ function Login(props) {
                     alert("Invalid username or password. Please try again.");
                 }
                 sessionStorage.setItem("userId", id);
-                // console.log(sessionStorage.getItem("userId"));
+
+                console.log(sessionStorage.getItem("userId"));
             })
             .catch((error)=>{
                 console.log(error);

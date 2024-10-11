@@ -25,6 +25,7 @@ function Board(props) {
     };
 
     useEffect(()=>{
+        console.log(sessionStorage.getItem("userId"));
         axios
             .get("/board")
             .then(res => {
@@ -120,30 +121,9 @@ function Board(props) {
                             </div>
                         ))}
 
-                        {/*<div className="board-body-box-subject">*/}
-                        {/*    AITAHa leaving home husband cost to all IVF session marriage?*/}
-                        {/*</div>*/}
-                        {/*<div className="board-body-box-contents">*/}
-                        {/*    Sorry for any mistakes in advance, I have been married to my husband for 13 years. We’ve been*/}
-                        {/*    trying for so long to have a child but havent’t …*/}
-                        {/*</div>*/}
                     </div>
 
 
-                    {/*<div>*/}
-                    {/*    {boardList.map((board, index) => (*/}
-                    {/*        <div key={index} className="board-body-box">*/}
-                    {/*            <div className="board-body-box-subject">*/}
-                    {/*                /!* 제목 출력 *!/*/}
-                    {/*                {board.title}*/}
-                    {/*            </div>*/}
-                    {/*            <div className="board-body-box-contents">*/}
-                    {/*                /!* 내용 출력 *!/*/}
-                    {/*                {board.content}*/}
-                    {/*            </div>*/}
-                    {/*        </div>*/}
-                    {/*    ))}*/}
-                    {/*</div>*/}
                 </div>
 
                 <div className="board-body-box2">
@@ -190,14 +170,7 @@ function Board(props) {
                                 </div>
                             </div>
                         ))}
-                        {/*<div className="board-body-box-subject">*/}
-                        {/*    AITAHa leaving home husband cost to all IVF session marriage?*/}
-                        {/*</div>*/}
-                        {/*<div className="board-body-box-contents">*/}
-                        {/*    Sorry for any mistakes in advance, I have been married to my husband for 13 years. We’ve*/}
-                        {/*    been*/}
-                        {/*    trying for so long to have a child but havent’t …*/}
-                        {/*</div>*/}
+
                     </div>
                 </div>
 

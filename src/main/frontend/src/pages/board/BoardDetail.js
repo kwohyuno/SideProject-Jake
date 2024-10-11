@@ -49,27 +49,6 @@ function BoardDetail(props) {
         navi(`/board/updateform/${boardId}`,{ state: board });
     };
 
-    // const translateContent = async (e)=>{
-    //     e.preventDefault();
-    //
-    //     try {
-    //         const response = await axios.post('http://localhost:8080/translate', {
-    //             prompt: board.content,
-    //         });
-    //
-    //         setTranslatedText(response.data.translatedText);
-    //         console.log("번역된거는 뭐냐면은"+response.data.translatedText);
-    //
-    //     } catch (error) {
-    //         console.error('Error during translation:', error);
-    //     }
-    //
-    //
-    //     // setTranslatedTitle("Translated title(TBU)")
-    //     // setTranslatedText("Translated text(TBU)");
-    //     handleOpen();
-    // }
-
     const translateContent = (e) => {
         e.preventDefault();
 

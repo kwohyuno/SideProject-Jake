@@ -8,6 +8,7 @@ import com.example.SpringDemo.Repository.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -45,12 +46,18 @@ public class MessageService {
     }
 
     public List<Conversation> getAllChatrooms(String loginUser){
-        List<Conversation> conversations = null;
+        List<Conversation> conversations = new ArrayList<>();
 
         List<Conversation> tmp = conversationRepository.findAll();
         for(Conversation c : tmp){
-            if(c.getUserOneId().equals(loginUser)
-                    || c.getUserOneId().equals(loginUser)){
+            if(c.getUserOneId().equals(loginUser)){
+                conversations.add(c);
+            }
+
+            if(c.getUserTwoId().equals(loginUser)){
+                String sc = c.getUserOneId();
+                c.setUserOneId(loginUser);
+                c.setUserTwoId(sc);
                 conversations.add(c);
             }
         }
@@ -58,7 +65,7 @@ public class MessageService {
     }
 
     public List<Message> getAllMessage(String participant1, String participant2){
-        List<Message> messages = null;
+        List<Message> messages = new ArrayList<>();
         List<Message> tmp = messageRepository.findAll();
         for(Message m : tmp){
             if(m.getSenderId().equals(participant1) && m.getReceiverId().equals(participant2)
@@ -70,13 +77,10 @@ public class MessageService {
     }
 
 
-    public Message sendMessage(int conversationId, String senderId, String messageText){
-        Message message = new Message();
-        message.setConversationId(conversationId);
-        message.setSenderId(senderId);
-        message.setMessageText(messageText);
+    public Message sendMessage(Message messagedto){
 
-        return messageRepository.save(message);
+
+        return messageRepository.save(messagedto);
     }
 
 

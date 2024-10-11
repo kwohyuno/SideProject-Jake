@@ -28,18 +28,19 @@ public class MessageController {
     }
 
     @GetMapping("/getallchatrooms")
-    public List<Conversation> getAllChatrooms(String loginUser){
+    public List<Conversation> getAllChatrooms(@RequestParam String loginUser){
         return messageService.getAllChatrooms(loginUser);
     }
 
-    @GetMapping("/getallmessage")
+    @GetMapping("/getmessage")
     public List<Message> getAllMessage(String participant1, String participant2){
         return messageService.getAllMessage(participant1, participant2);
     }
 
     @PostMapping("/sendmessage")
-    public Message sendMessage(int conversationId, String senderId, String messageText){
-        return messageService.sendMessage(conversationId, senderId, messageText);
+    public Message sendMessage(@RequestBody Message messagedto){
+
+        return messageService.sendMessage(messagedto);
     }
 
 }

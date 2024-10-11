@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 
 @Entity
-@Table(name = "Conversations")
+@Table(name = "Messages")
 @Data
 public class Message {
 
@@ -16,9 +16,6 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-
-    @Column(name = "conversation_id", unique = true, nullable = false)
-    private Integer conversationId;
 
     @Column(name = "sender_id", unique = true, nullable = false)
     private String senderId;
