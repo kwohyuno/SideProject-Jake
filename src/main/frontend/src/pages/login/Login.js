@@ -22,7 +22,7 @@ function Login(props) {
         axios
             .post("/login", dto)
             .then((res)=>{
-                console.log(dto);
+                // console.log(dto);
 
                 if(res.data!=''){
                     // console.log(res);

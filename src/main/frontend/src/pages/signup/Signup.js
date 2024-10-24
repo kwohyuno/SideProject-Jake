@@ -21,7 +21,7 @@ function Signup(props) {
         axios
             .post("/members/create", dto)
             .then(()=>{
-                console.log(dto);
+                // console.log(dto);
                 sessionStorage.setItem("userId", id);
                 navi("/login");
             })
