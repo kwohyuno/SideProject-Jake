@@ -61,11 +61,11 @@ function Board(props) {
                     <img className="board-header-logo-image" alt=""
                          src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/header-icon.svg'}/>
                 </div>
-                <div className="board-header-searchbar">
-                    <img className="board-header-searchbar-icon" alt=""
-                         src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/searchicon.svg'}/>
-                    <input className="board-header-searchbar-input" type="text" placeholder="Search posts"/>
-                </div>
+                {/*<div className="board-header-searchbar">*/}
+                {/*    <img className="board-header-searchbar-icon" alt=""*/}
+                {/*         src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/searchicon.svg'}/>*/}
+                {/*    <input className="board-header-searchbar-input" type="text" placeholder="Search posts"/>*/}
+                {/*</div>*/}
                 <div className="board-header-posticon">
                     <button className="board-header-posticon-btn" onClick={handleCreate}>+ Create</button>
                 </div>
