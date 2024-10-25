@@ -29,7 +29,8 @@ function Board(props) {
         axios
             .get("/board")
             .then(res => {
-                setBoardList(res.data);
+                const sortedBoardList = res.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+                setBoardList(sortedBoardList);
             })
             .catch((error) => {
                 console.log(error);
@@ -82,114 +83,6 @@ function Board(props) {
                 </div>
 
             </div>
-            {/*<div className="board-body">*/}
-
-            {/*    <div className="board-body-box">*/}
-            {/*        <div className="board-body-box-post1">*/}
-
-
-            {/*            <div className="board-body-box-profile">*/}
-            {/*                <img className="board-body-box-profile-img" alt={userData.name}*/}
-            {/*                     onClick={() => handleClickOpen(userData)} style={{cursor: 'pointer'}}*/}
-            {/*                     src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/profileimg.svg'}/>*/}
-
-
-            {/*                <div className="board-body-box-profile-id" onClick={() => handleClickOpen(userData)}*/}
-            {/*                     style={{cursor: 'pointer'}}> r/AITAH*/}
-            {/*                </div>*/}
-            {/*                <div className="board-body-box-profile-writtendate"> 12hr ago</div>*/}
-
-            {/*                <Dialog open={open} onClose={handleClose}>*/}
-            {/*                    <DialogTitle>{selectedUser?.name}</DialogTitle>*/}
-            {/*                    <DialogContent>*/}
-            {/*                        <img src={selectedUser?.photo} alt={selectedUser?.name}*/}
-            {/*                             style={{width: '100px', height: '100px'}}/>*/}
-            {/*                        <p>{selectedUser?.email}</p>*/}
-            {/*                        <p>{selectedUser?.id}</p>*/}
-            {/*                        /!* 유저의 프로필 정보 등 원하는 내용을 추가 *!/*/}
-            {/*                    </DialogContent>*/}
-            {/*                    <DialogActions>*/}
-            {/*                        <Button onClick={handleClose} color="primary">*/}
-            {/*                            닫기*/}
-            {/*                        </Button>*/}
-            {/*                    </DialogActions>*/}
-            {/*                </Dialog>*/}
-
-            {/*            </div>*/}
-
-            {/*            {boardList.slice(-1).map((board, index) => (*/}
-            {/*                <div key={index} onClick={()=>{*/}
-            {/*                    navi(`/board/detail/${board.id}`);*/}
-            {/*                }}*/}
-            {/*                style={{cursor:"pointer"}}*/}
-            {/*                >*/}
-            {/*                    <div className="board-body-box-subject">*/}
-            {/*                        {board.title}*/}
-            {/*                    </div>*/}
-            {/*                    <div className="board-body-box-contents">*/}
-            {/*                        {board.content}*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-            {/*            ))}*/}
-
-            {/*        </div>*/}
-
-
-            {/*    </div>*/}
-
-            {/*    <div className="board-body-box2">*/}
-            {/*        <div className="board-body-box-post2" >*/}
-            {/*            <div className="board-body-box-profile">*/}
-            {/*                <img className="board-body-box-profile-img" alt={userData.name}*/}
-            {/*                     onClick={() => handleClickOpen(userData)} style={{cursor: 'pointer'}}*/}
-            {/*                     src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/profileimg.svg'}/>*/}
-
-
-            {/*                <div className="board-body-box-profile-id" onClick={() => handleClickOpen(userData)}*/}
-            {/*                     style={{cursor: 'pointer'}}> r/AITAH*/}
-            {/*                </div>*/}
-            {/*                <div className="board-body-box-profile-writtendate"> 12hr ago</div>*/}
-
-            {/*                <Dialog open={open} onClose={handleClose}>*/}
-            {/*                    <DialogTitle>{selectedUser?.name}</DialogTitle>*/}
-            {/*                    <DialogContent>*/}
-            {/*                        <img src={selectedUser?.photo} alt={selectedUser?.name}*/}
-            {/*                             style={{width: '100px', height: '100px'}}/>*/}
-            {/*                        <p>{selectedUser?.email}</p>*/}
-            {/*                        <p>{selectedUser?.id}</p>*/}
-            {/*                        /!* 유저의 프로필 정보 등 원하는 내용을 추가 *!/*/}
-            {/*                    </DialogContent>*/}
-            {/*                    <DialogActions>*/}
-            {/*                        <Button onClick={handleClose} color="primary">*/}
-            {/*                            닫기*/}
-            {/*                        </Button>*/}
-            {/*                    </DialogActions>*/}
-            {/*                </Dialog>*/}
-
-            {/*            </div>*/}
-
-            {/*            {boardList.slice(-2,-1).map((board, index) => (*/}
-            {/*                <div key={index} onClick={()=>{*/}
-            {/*                    navi(`/board/detail/${board.id}`);*/}
-            {/*                }}*/}
-            {/*                     style={{cursor:"pointer"}}>*/}
-            {/*                    <div className="board-body-box-subject">*/}
-            {/*                        {board.title}*/}
-            {/*                    </div>*/}
-            {/*                    <div className="board-body-box-contents">*/}
-            {/*                        {board.content}*/}
-            {/*                    </div>*/}
-            {/*                </div>*/}
-            {/*            ))}*/}
-
-            {/*        </div>*/}
-            {/*    </div>*/}
-
-            {/*    <div className="board-body-pages">*/}
-            {/*        1 2 3 4 5 ... 12*/}
-            {/*    </div>*/}
-
-            {/*</div>*/}
 
 
             <div className="board-body">

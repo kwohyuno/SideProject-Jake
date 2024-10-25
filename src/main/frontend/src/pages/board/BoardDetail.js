@@ -67,7 +67,13 @@ function BoardDetail(props) {
             });
     }
 
+    const handleLogout = () => {
+        // 세션에서 사용자 정보 삭제
+        sessionStorage.removeItem("userId");
 
+        // 로그인 페이지로 리다이렉트
+        navi("/login");
+    };
 
 
     return(
@@ -77,7 +83,7 @@ function BoardDetail(props) {
                     <img className="boarddetail-header-logo-image" alt="" src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/header-icon.svg'}/>
                 </div>
                 <div className="boarddetail-header-logoutbtn">
-                    <button className="boarddetail-header-logoutbtn-btn">Log out</button>
+                    <button className="boarddetail-header-logoutbtn-btn" onClick={handleLogout}>Log out</button>
                 </div>
             </div>
 
@@ -94,8 +100,14 @@ function BoardDetail(props) {
 
                     <div className="boarddetail-body-box-btnbox">
                         <div className="boarddetail-body-box-btnbox-like" style={{cursor:'pointer'}}>2</div>
-                        <div className="boarddetail-body-box-btnbox-delete" style={{cursor:'pointer'}} onClick={() => deleteBoard(boardId)}>Delete</div>
-                        <div className="boarddetail-body-box-btnbox-edit" style={{cursor:'pointer'}} onClick={() => editBoard(boardId)}>Edit</div>
+
+                        {board.authorId === sessionStorage.getItem("userId") ? (
+                            <>
+                                <div className="boarddetail-body-box-btnbox-delete" style={{cursor:'pointer'}} onClick={() => deleteBoard(boardId)}>Delete</div>
+                                <div className="boarddetail-body-box-btnbox-edit" style={{cursor:'pointer'}} onClick={() => editBoard(boardId)}>Edit</div>
+                            </>
+                        ) : null}
+
                         <div className="boarddetail-body-box-btnbox-translate" style={{cursor:'pointer'}} onClick={translateContent}> Translate </div>
                         <div className="boarddetail-body-box-btnbox-dashboard" style={{cursor:'pointer'}} onClick={()=> navi("/board")}>  Dashboard &nbsp; &gt; </div>
                         {/*<div className="boarddetail-body-box-btnbox-comment" style={{cursor:'pointer'}}>3</div>*/}

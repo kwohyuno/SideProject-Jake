@@ -26,7 +26,7 @@ public class Board {
 
     @Column(name="author_id",nullable=false)
     private String authorId;
-    // 글쓴이: Member 테이블의 id를 참조하는 외래 키
+
 
     @Column(name = "likes", nullable = false)
     private Integer likes = 0;  // 좋아요 갯수 기본값 0
@@ -35,7 +35,7 @@ public class Board {
     @Column(name = "created_at", updatable = false)
     private Timestamp createdAt;
 
-    // @PrePersist로 엔티티 저장 전에 createdAt에 현재 시간 설정
+
     @PrePersist
     protected void onCreate() {
         this.createdAt = Timestamp.from(Instant.now());  // 현재 시간을 설정
