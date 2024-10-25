@@ -44,6 +44,14 @@ function Board(props) {
         email: "johndoe@example.com"
     };
 
+    const handleLogout = () => {
+        // 세션에서 사용자 정보 삭제
+        sessionStorage.removeItem("userId");
+
+        // 로그인 페이지로 리다이렉트
+        navi("/login");
+    };
+
     return (
         <div className="board">
             <div className="board-header">
@@ -66,7 +74,7 @@ function Board(props) {
                     <button className="board-header-mypagebtn-btn">My Page</button>
                 </div>
                 <div className="board-header-logoutbtn">
-                <button className="board-header-logoutbtn-btn">Log out</button>
+                <button className="board-header-logoutbtn-btn" onClick={handleLogout}>Log out</button>
                 </div>
 
             </div>
