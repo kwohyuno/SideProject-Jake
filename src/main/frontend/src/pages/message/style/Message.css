@@ -22,7 +22,8 @@
     height: 14rem;
     background-color: #cacaca;
     width:25rem;
-    height:50rem;
+    /*height:50rem;*/
+    height: auto;
 }
 
 .message-header-logoutbtn-btn {
@@ -88,8 +89,10 @@
     height: 14rem;
     background-color: #cac3c3;
     width:50rem;
-    height:50rem;
+    /*height:50rem;*/
+    height: auto;
 }
+
 
 .message-body-messageroom-content{
     position: relative;

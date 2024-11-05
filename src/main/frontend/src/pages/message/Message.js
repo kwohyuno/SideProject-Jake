@@ -37,6 +37,7 @@ function Message(props) {
             .then((res) => {
                 setChatMessages(res.data);
                 setReceiverId(userTwoId);
+                setMessage('');
             })
             .catch((error) => {
             console.error("Error fetching chatMessage", error);
