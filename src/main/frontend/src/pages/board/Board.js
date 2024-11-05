@@ -76,7 +76,7 @@ function Board(props) {
 
                 </div>
                 <div className="board-header-mypagebtn">
-                    <button className="board-header-mypagebtn-btn">My Page</button>
+                    <button className="board-header-mypagebtn-btn" onClick={()=>navi("/mypage")}>My Page</button>
                 </div>
                 <div className="board-header-logoutbtn">
                     <button className="board-header-logoutbtn-btn" onClick={handleLogout}>Log out</button>

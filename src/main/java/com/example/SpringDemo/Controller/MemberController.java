@@ -27,6 +27,11 @@ public class MemberController {
     public List<Member> getAllMembers() {
         return memberService.getAllMembers();
     }
+
+    @PostMapping("/update")
+    public Member updateMember(@RequestBody Member member) {
+        return memberService.updateMember(member);
+    }
 }
 
 

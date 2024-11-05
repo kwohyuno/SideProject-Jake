@@ -109,9 +109,18 @@
 
 .mypage-header-profile-id{
     position:absolute;
-    left:8rem;
-    top:2rem;
-    font-size:30px;
+    left:1.5rem;
+    top:3rem;
+    font-size:45px;
+    font-weight: bold;
+}
+
+.mypage-body-name-text{
+    position:absolute;
+    left:4rem;
+    top:2.9rem;
+    font-size:35px;
+    font-weight: bold;
 }
 
 .mypage-body{
@@ -137,9 +146,15 @@
     left:2rem;
     padding-left: 2rem;
     border-color: #9c9b9b;
+
+
 }
 
-.mypage-body-state-input{
+.mypage-body-name-input::placeholder {
+    color: black;
+}
+
+.mypage-body-password-input{
     top:8.5rem;
     position: absolute;
     height:4rem;
@@ -151,7 +166,13 @@
     border-color: #9c9b9b;
 }
 
-.mypage-body-college-input{
+.mypage-body-password-input::placeholder {
+    color: #c1bfbf;
+}
+
+
+
+.mypage-body-email-input{
     top:15rem;
     position: absolute;
     height:4rem;
@@ -163,17 +184,21 @@
     border-color: #9c9b9b;
 }
 
-.mypage-body-age-input{
-    top:21.5rem;
-    position: absolute;
-    height:4rem;
-    width: 42rem;
-    border-radius: 15px;
-    font-size: 1.8rem;
-    left:2rem;
-    padding-left: 2rem;
-    border-color: #9c9b9b;
+.mypage-body-email-input::placeholder {
+    color: #c1bfbf;
 }
+
+/*.mypage-body-email-input{*/
+/*    top:21.5rem;*/
+/*    position: absolute;*/
+/*    height:4rem;*/
+/*    width: 42rem;*/
+/*    border-radius: 15px;*/
+/*    font-size: 1.8rem;*/
+/*    left:2rem;*/
+/*    padding-left: 2rem;*/
+/*    border-color: #9c9b9b;*/
+/*}*/
 
 .mypage-body-nationality-input{
     top:28rem;
@@ -189,7 +214,7 @@
 
 .mypage-body-btn-submitbtn{
     position: absolute;
-    top: 36rem;
+    top: 24rem;
     left: 36rem;
     width: 10rem;
 
@@ -200,6 +225,7 @@
     border-radius: 5px;        /* 모서리를 약간 둥글게 */
     font-size: 16px;           /* 글자 크기 */
     cursor: pointer;           /* 마우스 커서를 손가락 모양으로 */
+    font-weight: bold;
 }
 
 
