@@ -12,6 +12,8 @@ function BoardDetail(props) {
     const [open, setOpen] = useState(false); // 모달 상태
     const [translatedTitle, setTranslatedTitle] = useState("");
     const [translatedText, setTranslatedText] = useState("");
+    const [comment, setComment] = useState("");
+    const [commentList,setCommentList] = useState([]);
 
 
 
@@ -75,6 +77,49 @@ function BoardDetail(props) {
         navi("/login");
     };
 
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const dto={
+            postId: boardId,
+            userId:sessionStorage.getItem("userId"),
+            content: comment
+        };
+        axios
+            .post("/comment/create", dto)
+            .then(()=>{
+                // console.log(dto);
+                window.location.reload();
+            })
+            .catch((error)=>{
+                console.log(error);
+            });
+
+    };
+
+    useEffect(()=>{
+        axios
+            .get(`/comment`, { params: { postId: boardId } })
+            .then(res => {
+                const sortedCommentList = res.data.sort((a, b) =>  new Date(a.createdAt) - new Date(b.createdAt));
+                setCommentList(sortedCommentList);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    },[]);
+
+    const deleteComment = (commentId) => {
+        if (window.confirm("Are you sure you want to delete this comment?")) {
+            axios.delete(`/comment/${commentId}`)
+                .then(() => {
+                    window.location.reload();
+                })
+                .catch((error) => {
+                    console.error("Error deleting board:", error);
+                });
+        }
+    };
+
 
     return(
         <div className="boarddetail">
@@ -99,7 +144,6 @@ function BoardDetail(props) {
                     </div>
 
                     <div className="boarddetail-body-box-btnbox">
-                        {/*<div className="boarddetail-body-box-btnbox-like" style={{cursor:'pointer'}}>2</div>*/}
 
                         {board.authorId === sessionStorage.getItem("userId") ? (
                             <>
@@ -110,34 +154,45 @@ function BoardDetail(props) {
 
                         <div className="boarddetail-body-box-btnbox-translate" style={{cursor:'pointer'}} onClick={translateContent}> Translate </div>
                         <div className="boarddetail-body-box-btnbox-dashboard" style={{cursor:'pointer'}} onClick={()=> navi("/board")}>  Dashboard &nbsp; &gt; </div>
-                        {/*<div className="boarddetail-body-box-btnbox-comment" style={{cursor:'pointer'}}>3</div>*/}
-                        {/*<div className="boarddetail-body-box-btnbox-share" style={{cursor:'pointer'}}>share</div>*/}
                     </div>
 
-                    <input className="boarddetail-body-box-writecomment" type="text" placeholder="Write Comment" />
+                    <form onSubmit={handleSubmit}>
+                        <input className="boarddetail-body-box-writecomment" type="text" placeholder="Write Comment" value={comment} onChange={(e) => setComment(e.target.value)}/>
 
-                    <button className="boarddetail-body-box-postcomment" style={{cursor:'pointer'}}>Post</button>
+
+                        <button className="boarddetail-body-box-postcomment" style={{cursor:'pointer'}}>Post</button>
+                    </form>
 
                     <div className="boarddetail-body-box-commentbox">
                         <div className="boarddetail-body-box-commentbox-borderline">
                             <div className="boarddetail-body-box-commentbox-commentsign">comment</div>
                             <div className="boarddetail-body-box-commentbox-commentsignline"></div>
                         </div>
-                        <div className="boarddetail-body-box-commentbox-comments">
-                            <div className="boarddetail-body-box-commentbox-comments-comment">
-                                <div className="boarddetail-body-box-commentbox-comments-comment-header">
-                                    {/*<div className="boarddetail-body-box-comments-comments-comment-header-profilepic">*/}
-                                    {/*    <img className="boarddetail-body-box-comments-comments-comment-header-profilepic-img" src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/profileimg.svg'}/>*/}
-                                    {/*</div>*/}
-                                    <div className="boarddetail-body-box-comments-comments-comment-header-id">r/AITAH</div>
-                                    <div className="boarddetail-body-box-comments-comments-comment-header-writtentime">12 hr ago</div>
+
+
+                        {commentList.map((comment, index) => (
+                            <div className="boarddetail-body-box-commentbox-comments">
+                                <div className="boarddetail-body-box-commentbox-comments-comment">
+                                    <div className="boarddetail-body-box-commentbox-comments-comment-header">
+                                        <div
+                                            className="boarddetail-body-box-comments-comments-comment-header-id">{comment.userId}
+                                        </div>
+                                        <div
+                                            className="boarddetail-body-box-comments-comments-comment-header-writtentime">{comment.createdAt}
+                                        </div>
+                                    </div>
+                                    <div className="boarddetail-body-box-commentbox-comments-comment-content">
+                                        {comment.content}
+                                    </div>
+
+                                    <div className="boarddetail-body-box-commentbox-comments-comment-deletebtn" style={{cursor: 'pointer'}}
+                                        onClick={() => deleteComment(comment.commentId)}>Delete
+                                    </div>
+
                                 </div>
-                                <div className="boarddetail-body-box-commentbox-comments-comment-content">Hi everyone, we are looking for a roommate.</div>
-                                {/*<div className="boarddetail-body-box-commentbox-comments-comment-like">*/}
-                                {/*    <div className="boarddetail-body-box-comments-comments-comment-like-btn">2</div>*/}
-                                {/*</div>*/}
                             </div>
-                        </div>
+                        ))}
+
                     </div>
                 </div>
             </div>
@@ -157,7 +212,7 @@ function BoardDetail(props) {
                     }}
                 >
                     <Typography variant="h6" component="h2">
-                        {/*{translatedTitle ? translatedTitle : "Translating..."}*/}
+                    {/*{translatedTitle ? translatedTitle : "Translating..."}*/}
                         {translatedTitle}
                     </Typography>
                     <Typography sx={{ mt: 2 }}>

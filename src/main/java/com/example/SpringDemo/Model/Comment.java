@@ -8,13 +8,13 @@ import java.time.Instant;
 
 
 @Entity
-@Table(name = "Comment")
+@Table(name = "Comments")
 @Data
 public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "comment_id")
     private int commentId;
 
     @Column(name = "post_id", nullable = false)

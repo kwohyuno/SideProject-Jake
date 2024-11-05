@@ -27,8 +27,9 @@ public class CommentService {
         return commentRepository.save(comment);
     }
 
-    public List<Comment> getAllComment() {
-        return commentRepository.findAll();
+    public List<Comment> getAllComment(int postId) {
+
+        return commentRepository.findByPostId(postId);
     }
 
     public void deleteComment(int commentId) {

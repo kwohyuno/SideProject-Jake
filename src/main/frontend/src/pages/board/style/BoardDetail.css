@@ -209,6 +209,11 @@
     font-size:17px;
 }
 
+.boarddetail-body-box-commentbox-comments{
+    position:relative;
+
+}
+
 .boarddetail-body-box-commentbox-commentsign{
     position:absolute;
     font-size:17px;
@@ -227,13 +232,16 @@
 }
 
 .boarddetail-body-box-commentbox-comments-comment{
-    position:absolute;
+    position:relative;
     width:52rem;
-    height:10rem;
+    height:8rem;
     /*background-color: #acabab;*/
     top:40.6rem;
     left:3rem;
     border-bottom:1px solid #dad9d9;
+    background-color: #e8e8e8;
+    padding-bottom: 15px;
+    margin-bottom:15px;
 }
 
 .boarddetail-body-box-commentbox-comments-comment-header{
@@ -256,7 +264,7 @@
 
 .boarddetail-body-box-comments-comments-comment-header-id{
     position:absolute;
-    left: 5rem;
+    left: 1rem;
     top:0.8rem;
 }
 
@@ -270,7 +278,7 @@
 .boarddetail-body-box-commentbox-comments-comment-content{
     position:absolute;
     top:4rem;
-    left: 5rem;
+    left: 2rem;
 }
 
 .boarddetail-body-box-comments-comments-comment-like-btn{
@@ -290,7 +298,20 @@
 
 
 
-
+.boarddetail-body-box-commentbox-comments-comment-deletebtn{
+    position:relative;
+    height:2rem;
+    width:5rem;
+    top:6rem;
+    background-color: #d3d3d3;
+    /*left:4rem;*/
+    text-align:center;
+    margin-left:46rem;
+    margin-bottom:2rem;
+    display: flex; /* Use Flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
 
 
 

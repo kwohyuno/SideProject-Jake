@@ -26,8 +26,8 @@ public class CommentController {
     }
 
     @GetMapping
-    public List<Comment> getAllBoard() {
-        return commentService.getAllComment();
+    public List<Comment> getAllComment(@RequestParam(required = false) Integer postId) {
+        return commentService.getAllComment(postId);
     }
 
 

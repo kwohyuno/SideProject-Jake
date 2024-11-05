@@ -54,8 +54,6 @@ function Board(props) {
     };
 
     const sendMessage = (receiverId) =>{
-
-
         const participant1 = sessionStorage.getItem("userId");
         const participant2 = receiverId;
         console.log("Participant1:", participant1); // 세션에 저장된 사용자 ID
