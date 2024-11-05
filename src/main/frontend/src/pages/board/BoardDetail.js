@@ -120,6 +120,27 @@ function BoardDetail(props) {
         }
     };
 
+    const sendMessage = (receiverId) =>{
+        const participant1 = sessionStorage.getItem("userId");
+        const participant2 = receiverId;
+        console.log("Participant1:", participant1); // 세션에 저장된 사용자 ID
+        console.log("Participant2:", participant2); // 메시지 수신자의 ID
+
+        axios
+            .post("/message/startconverse", {
+                participant1: participant1,
+                participant2: participant2
+
+
+            })
+            .then((response) => {
+                navi("/message");
+            })
+            .catch((error) => {
+                console.error("Error creating post:", error);
+            });
+    };
+
 
     return(
         <div className="boarddetail">
@@ -175,7 +196,17 @@ function BoardDetail(props) {
                                 <div className="boarddetail-body-box-commentbox-comments-comment">
                                     <div className="boarddetail-body-box-commentbox-comments-comment-header">
                                         <div
-                                            className="boarddetail-body-box-comments-comments-comment-header-id">{comment.userId}
+                                            className="boarddetail-body-box-comments-comments-comment-header-id"
+                                            onClick={() => sendMessage(comment.userId)}
+                                            style={{ cursor: 'pointer' }}
+                                            >
+
+                                            {comment.userId}
+
+                                            <div className="boarddetail-body-box-comments-comments-comment-header-id-popup">
+                                                Send Message
+                                            </div>
+
                                         </div>
                                         <div
                                             className="boarddetail-body-box-comments-comments-comment-header-writtentime">{comment.createdAt}
