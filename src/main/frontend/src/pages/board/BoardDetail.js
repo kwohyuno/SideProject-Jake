@@ -185,9 +185,15 @@ function BoardDetail(props) {
                                         {comment.content}
                                     </div>
 
-                                    <div className="boarddetail-body-box-commentbox-comments-comment-deletebtn" style={{cursor: 'pointer'}}
-                                        onClick={() => deleteComment(comment.commentId)}>Delete
-                                    </div>
+                                    {comment.userId === sessionStorage.getItem("userId") && (
+                                        <div
+                                            className="boarddetail-body-box-commentbox-comments-comment-deletebtn"
+                                            style={{ cursor: 'pointer' }}
+                                            onClick={() => deleteComment(comment.commentId)}
+                                        >
+                                            Delete
+                                        </div>
+                                    )}
 
                                 </div>
                             </div>
