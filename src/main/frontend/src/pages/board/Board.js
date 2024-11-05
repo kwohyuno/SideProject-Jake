@@ -91,13 +91,13 @@ function Board(props) {
                          style={{cursor: 'pointer'}}>
                         <div className="board-body-box-post">
                             <div className="board-body-box-profile">
-                                <img
-                                    className="board-body-box-profile-img"
-                                    alt={userData.name}
-                                    onClick={() => handleClickOpen(userData)}
-                                    style={{cursor: 'pointer'}}
-                                    src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/profileimg.svg'}
-                                />
+                                {/*<img*/}
+                                {/*    className="board-body-box-profile-img"*/}
+                                {/*    alt={userData.name}*/}
+                                {/*    onClick={() => handleClickOpen(userData)}*/}
+                                {/*    style={{cursor: 'pointer'}}*/}
+                                {/*    src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/profileimg.svg'}*/}
+                                {/*/>*/}
                                 <div className="board-body-box-profile-id" onClick={() => handleClickOpen(userData)}
                                      style={{cursor: 'pointer'}}>
                                     {board.authorId}

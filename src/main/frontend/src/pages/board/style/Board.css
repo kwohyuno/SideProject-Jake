@@ -134,11 +134,11 @@
     .board-body-box-profile-id{
         /*position:absolute;*/
         top:2.5rem;
-        left:6rem;
         height:2.5rem;
         width:3rem;
-        padding-left:20px;
+        /*padding-left:5px;*/
         padding-top: 10px;
+        font-size: 20px;
     }
 
     .board-body-box-profile-writtendate{
@@ -147,8 +147,8 @@
         left:11rem;
         height:2.5rem;
         width:10rem;
-        padding-top: 9px;
-        padding-left: 55px;
+        padding-top: 13px;
+        padding-left: 85px;
     }
 
 
