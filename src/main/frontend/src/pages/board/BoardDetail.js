@@ -90,16 +90,16 @@ function BoardDetail(props) {
 
             <div className="boarddetail-body">
                 <div className="boarddetail-body-box">
-                    <img className="boarddetail-body-box-profile-img" src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/profileimg.svg'}/>
-                    <div className="boarddetail-body-box-profile-id"> r/AITAH</div>
-                    <div className="boarddetail-body-box-profile-writtentime">12 hour ago</div>
+                    {/*<img className="boarddetail-body-box-profile-img" src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/profileimg.svg'}/>*/}
+                    <div className="boarddetail-body-box-profile-id"> {board.authorId}</div>
+                    <div className="boarddetail-body-box-profile-writtentime">{board.createdAt}</div>
 
                     <div className="boarddetail-body-box-subject">{board.title}</div>
                     <div className="boarddetail-body-box-content">{board.content}
                     </div>
 
                     <div className="boarddetail-body-box-btnbox">
-                        <div className="boarddetail-body-box-btnbox-like" style={{cursor:'pointer'}}>2</div>
+                        {/*<div className="boarddetail-body-box-btnbox-like" style={{cursor:'pointer'}}>2</div>*/}
 
                         {board.authorId === sessionStorage.getItem("userId") ? (
                             <>
@@ -126,16 +126,16 @@ function BoardDetail(props) {
                         <div className="boarddetail-body-box-commentbox-comments">
                             <div className="boarddetail-body-box-commentbox-comments-comment">
                                 <div className="boarddetail-body-box-commentbox-comments-comment-header">
-                                    <div className="boarddetail-body-box-comments-comments-comment-header-profilepic">
-                                        <img className="boarddetail-body-box-comments-comments-comment-header-profilepic-img" src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/profileimg.svg'}/>
-                                    </div>
+                                    {/*<div className="boarddetail-body-box-comments-comments-comment-header-profilepic">*/}
+                                    {/*    <img className="boarddetail-body-box-comments-comments-comment-header-profilepic-img" src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/profileimg.svg'}/>*/}
+                                    {/*</div>*/}
                                     <div className="boarddetail-body-box-comments-comments-comment-header-id">r/AITAH</div>
                                     <div className="boarddetail-body-box-comments-comments-comment-header-writtentime">12 hr ago</div>
                                 </div>
                                 <div className="boarddetail-body-box-commentbox-comments-comment-content">Hi everyone, we are looking for a roommate.</div>
-                                <div className="boarddetail-body-box-commentbox-comments-comment-like">
-                                    <div className="boarddetail-body-box-comments-comments-comment-like-btn">2</div>
-                                </div>
+                                {/*<div className="boarddetail-body-box-commentbox-comments-comment-like">*/}
+                                {/*    <div className="boarddetail-body-box-comments-comments-comment-like-btn">2</div>*/}
+                                {/*</div>*/}
                             </div>
                         </div>
                     </div>
