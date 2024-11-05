@@ -141,6 +141,27 @@
         font-size: 20px;
     }
 
+
+    .board-body-box-profile-message-popup{
+        display: none; /* 초기에는 숨김 */
+        position: relative;
+        top: 1rem;
+        left: 0;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        padding: 5px 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+        white-space: nowrap;
+        width: 8rem;
+    }
+
+    /* Hover 시 메시지 창 표시 */
+    .board-body-box-profile-id:hover .board-body-box-profile-message-popup {
+        display: block;
+    }
+
     .board-body-box-profile-writtendate{
         /*position:absolute;*/
         top:2.5rem;

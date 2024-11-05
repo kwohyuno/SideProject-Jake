@@ -2,6 +2,7 @@ package com.example.SpringDemo.Controller;
 
 
 import com.example.SpringDemo.Model.Conversation;
+import com.example.SpringDemo.Model.ConversationRequest;
 import com.example.SpringDemo.Model.Message;
 import com.example.SpringDemo.Services.MemberService;
 import com.example.SpringDemo.Services.MessageService;
@@ -23,8 +24,8 @@ public class MessageController {
     }
 
     @PostMapping("/startconverse")
-    public Conversation startConversation(String participant1, String participant2){
-        return messageService.startConversation(participant1, participant2);
+    public Conversation startConversation(@RequestBody ConversationRequest request) {
+        return messageService.startConversation(request.getParticipant1(), request.getParticipant2());
     }
 
     @GetMapping("/getallchatrooms")

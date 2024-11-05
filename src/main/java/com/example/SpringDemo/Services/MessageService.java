@@ -23,6 +23,10 @@ public class MessageService {
     }
 
     public Conversation startConversation(String participant1, String participant2){
+
+        System.out.println("participant1" + participant1);
+        System.out.println("participant2" + participant2);
+
         List<Conversation> conversations = conversationRepository.findAll();
         boolean ifExists = false;
         Conversation existingConversation = null;

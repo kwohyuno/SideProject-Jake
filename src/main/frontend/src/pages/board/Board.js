@@ -53,6 +53,29 @@ function Board(props) {
         navi("/login");
     };
 
+    const sendMessage = (receiverId) =>{
+
+
+        const participant1 = sessionStorage.getItem("userId");
+        const participant2 = receiverId;
+        console.log("Participant1:", participant1); // 세션에 저장된 사용자 ID
+        console.log("Participant2:", participant2); // 메시지 수신자의 ID
+
+        axios
+            .post("/message/startconverse", {
+                participant1: participant1,
+                participant2: participant2
+
+
+            })
+            .then((response) => {
+                navi("/message");
+            })
+            .catch((error) => {
+                console.error("Error creating post:", error);
+            });
+    };
+
     return (
         <div className="board">
             <div className="board-header">
@@ -87,28 +110,25 @@ function Board(props) {
 
             <div className="board-body">
                 {boardList.map((board, index) => (
-                    <div key={index} className="board-body-box" onClick={() => navi(`/board/detail/${board.id}`)}
+                    <div key={index} className="board-body-box"
                          style={{cursor: 'pointer'}}>
                         <div className="board-body-box-post">
                             <div className="board-body-box-profile">
-                                {/*<img*/}
-                                {/*    className="board-body-box-profile-img"*/}
-                                {/*    alt={userData.name}*/}
-                                {/*    onClick={() => handleClickOpen(userData)}*/}
-                                {/*    style={{cursor: 'pointer'}}*/}
-                                {/*    src={'https://projectjakeassets.s3.ap-northeast-2.amazonaws.com/src/board_assets/profileimg.svg'}*/}
-                                {/*/>*/}
-                                <div className="board-body-box-profile-id" onClick={() => handleClickOpen(userData)}
+
+                                <div className="board-body-box-profile-id" onClick={() => sendMessage(board.authorId)}
                                      style={{cursor: 'pointer'}}>
                                     {board.authorId}
+                                    <div className="board-body-box-profile-message-popup" >
+                                        Send Message
+                                    </div>
                                 </div>
                                 <div className="board-body-box-profile-writtendate">{board.createdAt}</div>
                             </div>
 
-                            <div className="board-body-box-subject">
+                            <div className="board-body-box-subject" onClick={() => navi(`/board/detail/${board.id}`)}>
                                 {board.title}
                             </div>
-                            <div className="board-body-box-contents">
+                            <div className="board-body-box-contents" onClick={() => navi(`/board/detail/${board.id}`)}>
                                 {board.content}
                             </div>
                         </div>
