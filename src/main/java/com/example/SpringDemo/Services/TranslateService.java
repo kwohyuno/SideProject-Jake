@@ -4,6 +4,7 @@ import com.example.SpringDemo.Model.TranslateRequest;
 import com.example.SpringDemo.Model.TranslateResponse;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
@@ -20,7 +21,14 @@ public class TranslateService {
     @Value("${openai.api.key}")  // application.properties에서 OpenAI API 키를 불러옴
     private String openAiApiKey;
 
-    private final RestTemplate restTemplate = new RestTemplate();
+    private RestTemplate restTemplate;
+
+    public TranslateService() {
+        SimpleClientHttpRequestFactory factory = new SimpleClientHttpRequestFactory();
+        factory.setConnectTimeout(3000); // 연결 타임아웃 5초
+        factory.setReadTimeout(3000);    // 읽기 타임아웃 5초
+        this.restTemplate = new RestTemplate(factory);
+    }
 
     public TranslateResponse translateText(TranslateRequest translateRequest) throws Exception {
         String openAiUrl = "https://api.openai.com/v1/chat/completions";

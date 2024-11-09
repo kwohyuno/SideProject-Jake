@@ -9,7 +9,7 @@ import com.example.SpringDemo.Services.TranslateService;
 
 @RestController
 @RequestMapping
-@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
+@CrossOrigin
 public class TranslationController {
 
     private final TranslateService translateService;
