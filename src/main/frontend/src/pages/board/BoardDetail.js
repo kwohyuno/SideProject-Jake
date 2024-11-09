@@ -54,7 +54,7 @@ function BoardDetail(props) {
     const translateContent = (e) => {
         e.preventDefault();
 
-        axios.post('http://localhost:8080/translate', {
+        axios.post("/translate", {
             prompt: board.content,
         })
             .then((response) => {
