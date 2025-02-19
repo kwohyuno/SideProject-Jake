@@ -22,7 +22,7 @@
 <br>
 
 <h2>Project Class</h2>
-<img width="635" alt="ERD_traveltraverser" src="https://github.com/user-attachments/assets/e15f4b03-69bb-4867-9919-1b4d12bd14c4" />
+<img width="635" alt="ERD_traveltraverser" src="https://github.com/user-attachments/assets/40e280c1-7742-4c3a-bc9d-b7a37a21eb18" />
 
 
 
