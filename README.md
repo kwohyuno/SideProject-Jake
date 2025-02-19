@@ -17,7 +17,8 @@
 <br>
 
 <h2>Database Schema</h2>
-<img width="635" alt="ERD_traveltraverser" src="https://github.com/user-attachments/assets/448a8290-44e2-46d5-b35c-6cc32d351760" />
+<img width="635" alt="ERD_traveltraverser" src="https://github.com/user-attachments/assets/6dea36f1-9697-4cb5-9a17-c7eaadd40b37" />
+
 <br>
 
 <h2>Project Class</h2>
